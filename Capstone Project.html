@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.jumbotron {
+    background: url('../images/job-search.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+}
+
+.jumbotron .form-control {
+    width: 300px;
+}
+
+.job-card {
+    margin-bottom: 20px;
+}
+
+.job-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+    </style>
+</head>
+<body>
+  <script>
+    // scripts.js
+document.addEventListener('DOMContentLoaded', function() {
+    loadJobListings();
+});
+
+function loadJobListings() {
+    const jobListings = [
+        {
+            title: 'Python Developer',
+            company: 'Confident Group',
+            location: 'Banglore, Chennai',
+            description: 'Looking for a skilled Python developer...'
+        },
+        {
+            title: 'UI/UX Designer',
+            company: 'TCS',
+            location: 'Hyderabad',
+            description: 'Seeking an experienced UI/UX Designer'
+        },
+        {
+            title: 'Web Designer',
+            company: 'Crantia Technologies',
+            location: 'Trivandrum',
+            description: 'We need a talented Web Designer'
+        }
+    ];
+
+    const jobListingsContainer = document.getElementById('job-listings');
+    jobListingsContainer.innerHTML = '';
+
+    jobListings.forEach(job => {
+        const jobCard = document.createElement('div');
+        jobCard.className = 'col-md-4';
+        jobCard.innerHTML = `
+            <div class="card job-card">
+                <div class="card-body">
+                    <h5 class="card-title">${job.title}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">${job.company}</h6>
+                    <p class="card-text">${job.location}</p>
+                    <p class="card-text">${job.description}</p>
+                    <a href="#" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+        `;
+        jobListingsContainer.appendChild(jobCard);
+    });
+}
+
+  </script>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="logo.jpg" alt="Logo" style="height: 100px;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Jobs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Companies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="jumbotron jumbotron-fluid text-center">
+        <div class="container">
+            <h1 class="display-4">Find Your Dream Job</h1>
+            <p class="lead">Browse through thousands of job listings and apply to your ideal job.</p>
+            <form class="form-inline justify-content-center">
+                <input class="form-control mr-2" type="search" placeholder="Job title, keywords, or company" aria-label="Search">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </header>
+
+    <!-- Job Listings -->
+    <div class="container mt-5">
+        <h2 class="mb-4">Latest Job Listings</h2>
+        <div class="row" id="job-listings">
+            <!-- Job cards will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
